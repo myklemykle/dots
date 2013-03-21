@@ -16,7 +16,7 @@ DOTS=`ls -ad -1 .??* | grep -v '^.git$'`
 echo linking $DOTS
 for i in $DOTS
 do
-  [ -f ~/$i ] || [ -f $i ] && ln $i ~/$i && echo linked $i
+  [ -f ~/$i ] || [ -f $i ] && ln -f $i ~/$i && echo linked $i
 done
 
 ####
