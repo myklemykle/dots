@@ -2,4 +2,3 @@ set nonumber
 set wrap
 set nolist
 set listchars=""
-
