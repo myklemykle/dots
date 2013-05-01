@@ -1,13 +1,33 @@
-alias swsh="ssh gesine@swampthing"
+[ -f ~/.zsql ] && . ~/.zsql
 alias cvsdiff="cvs diff 2>&1 | grep -v Diffing"
-alias cvsgrep="grep --exclude-dir .cvs --exclude \*.cvs\*"
-alias svngrep="grep --exclude-dir .svn --exclude \*.svn\*"
-srcgrep() { grep --exclude-dir .cvs --exclude \*.cvs\* --exclude-dir .svn --exclude \*.svn\* -r "$*" . ;  }
-alias ctags="/usr/local/bin/ctags"
+alias swsh="ssh gesine@swampthing"
+
+# grep through source.
+SG() { grep --exclude-dir .git --exclude \*.jp\*g --exclude \*.pdf --exclude \*.png --exclude \*.gif --exclude tags --exclude \*.po --exclude \*.pot --exclude-dir cache --exclude-dir tmp -r "$*" . ; }
+
+# same thing, but leave out the sql and xml files.
+sg() { grep --exclude-dir .git --exclude \*.sql --exclude \*.xml --exclude \*.jp\*g --exclude \*.pdf --exclude \*.png --exclude \*.gif --exclude tags --exclude \*.po --exclude \*.pot --exclude-dir cache --exclude-dir tmp -r "$*" . ; }
+
+# exhuberance!
+[ -x "/usr/local/bin/ctags" ] && alias ctags="/usr/local/bin/ctags"
+set tags=./tags;      
+
+# zsh tweaks
 unsetopt correct
 unsetopt correctall
+
 alias pear="/Applications/MAMP/bin/php/php5.4.4/bin/pear"
 alias phing="/Applications/MAMP/bin/php/php5.4.4/bin/phing"
+alias mamplogs="tail -f /Applications/MAMP/logs/*err*"
+
+# bitch make me a sandwich
+turn_out(){
+  cat ~/.ssh/id_rsa.pub | ssh $* "mkdir .ssh; chmod 700 .ssh; cat >> .ssh/authorized_keys;"
+}
+
+# for Apache Tomcat:
+export JAVA_HOME=/Library/Java/Home
+export CATALINA_HOME=~/Documents/netxposure/tomcat/Home
 
   ########
   # color terminals for ssh sessions or whatever

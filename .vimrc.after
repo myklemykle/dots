@@ -1,4 +1,6 @@
+set title
 set nonumber
 set wrap
 set nolist
 set listchars=""
+let g:SuperTabNoCompleteAfter = ['^',',','\s','{']
