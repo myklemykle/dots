@@ -1,3 +1,9 @@
 
 " overrides C-T for using ctags ... not cool
 call janus#disable_plugin('command-t')
+call janus#disable_plugin('gundo')
+
+" i prefer commas, don't you?
+let mapleader = ","
+
+let g:disable_markdown_autostyle=1

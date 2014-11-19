@@ -1,3 +1,4 @@
+#set -x
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -34,8 +35,10 @@ plugins=(git osx vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/opt/ruby/bin:/usr/local/CrossPack-AVR/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/Applications/MAMP/bin:/Applications/MAMP/Library/bin:/Applications/MAMP/bin/php5/bin:/Users/mykle/bin:/usr/sbin:/Users/mykle/Documents/Perl\ Scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/mykle/Documents/netxposure/tmp/rakudo-star-2013.02/install/bin
+export PATH=/usr/local/bin:/usr/local/opt/ruby/bin:/usr/local/CrossPack-AVR/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/Applications/MAMP/bin:/Applications/MAMP/Library/bin:/Applications/MAMP/bin/php5/bin:/Users/mykle/bin:/usr/sbin:/Users/mykle/Documents/Perl\ Scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/mykle/Documents/netxposure/tmp/rakudo-star-2013.02/install/bin:/usr/local/share/npm/bin
 
 # zsh tweaks i want on all hosts:
 unsetopt correct      # no autocorrection
 unsetopt correctall
+DISABLE_AUTO_TITLE="true"
+#set +x
