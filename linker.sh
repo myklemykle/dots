@@ -19,10 +19,6 @@ do
   [ -f ~/$i ] || [ -f $i ] && ln -f $i ~/$i && echo linked $i
 done
 
-####
-# don't really want host-specific stuff in here.  
-# maybe i will do a general-purpose 'custom' file later.
-#
-#  # link in ohmyzsh custom stuff.
-#  OHCUSS=~/.oh-my-zsh/custom   # ohmyzsh customization dir.
-#  [ -d "$OHCUSS" ] && ln ohmyzsh_custom/* "$OHCUSS"
+# link in ohmyzsh custom stuff.
+OHCUSS=~/.oh-my-zsh/custom   # ohmyzsh customization dir.
+[ -d "$OHCUSS" ] && ln ohmyzsh_custom/* "$OHCUSS"
