@@ -72,7 +72,7 @@ alias mamplogs="tail -f /Applications/MAMP/logs/*err*"
 
 # bitch make me a sandwich!
 turn_out(){
-  cat ~/.ssh/id_rsa.pub | ssh $* "mkdir .ssh; chmod 700 .ssh; cat >> .ssh/authorized_keys;"
+  cat ~/.ssh/id_rsa.pub | ssh $* "if [ -d .ssh ]; then; else; mkdir .ssh; chmod 700 .ssh; fi; cat >> .ssh/authorized_keys;"
 }
 
   ########

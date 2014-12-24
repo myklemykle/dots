@@ -12,8 +12,15 @@ alias dam_off="sudo ~/Documents/netxposure/imageportal/bin/shutdown.sh"
 alias dam_restart="sudo ~/Documents/netxposure/imageportal/bin/shutdown.sh; sleep 10; sudo ~/Documents/netxposure/imageportal/bin/startup.sh"
 newdam(){
 	#scp kropotkin.netx:/upgrades/latest/NetX-App-Latest.zip ~/Downloads &&
-	LATEST=`ssh mykle@service.netx.net "cd '/netx/service/data/repository/Jenkins/Upgrades/master/'; ls -t NetX*" | head -1`
-	scp "mykle@service.netx.net:/netx/service/data/repository/Jenkins/Upgrades/master/$LATEST" ~/Downloads
+		#/netx/service/data/repository/Jenkins/Upgrades/develop
+	if [ $1 ] 
+	then
+		TARGET=$1
+	else
+		TARGET="master"
+	fi
+	LATEST=`ssh mykle@service.netx.net "cd '/netx/service/data/repository/Jenkins/Upgrades/$TARGET/'; ls -t NetX*" | head -1`
+	scp "mykle@service.netx.net:/netx/service/data/repository/Jenkins/Upgrades/$TARGET/$LATEST" ~/Downloads
 		cd ~/Documents/netxposure/imageportal && { 
 			unzip -o ~/Downloads/$LATEST ; 
 			chmod 755 bin/*.sh # workaround for a bug

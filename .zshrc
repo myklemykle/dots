@@ -35,7 +35,26 @@ plugins=(git osx vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/opt/ruby/bin:/usr/local/CrossPack-AVR/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:/Applications/MAMP/bin:/Applications/MAMP/Library/bin:/Applications/MAMP/bin/php5/bin:~/bin:/usr/sbin:~/Documents/Perl\ Scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/Documents/netxposure/tmp/rakudo-star-2013.02/install/bin:/usr/local/share/npm/bin
+PATH=`paste -d ':' -s - << EOF
+/usr/local/bin
+/usr/local/opt/ruby/bin
+/usr/local/CrossPack-AVR/bin
+/opt/local/bin
+/opt/local/sbin
+/usr/local/bin
+/usr/local/sbin
+$HOME/bin
+$HOME/Documents/Perl\ Scripts
+/usr/bin
+/bin
+/usr/sbin
+/sbin
+/usr/local/share/npm/bin
+/Applications/MAMP/bin
+/Applications/MAMP/Library/bin
+/Applications/MAMP/bin/php5/bin
+EOF`
+export PATH
 
 # zsh tweaks i want on all hosts:
 unsetopt correct      # no autocorrection
