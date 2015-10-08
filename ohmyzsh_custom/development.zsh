@@ -75,6 +75,15 @@ turn_out(){
   cat ~/.ssh/id_rsa.pub | ssh $* "if [ -d .ssh ]; then; else; mkdir .ssh; chmod 700 .ssh; fi; cat >> .ssh/authorized_keys;"
 }
 
+# label windows and tabs in xterm/terminal/whatever:
+tabname() {
+  printf "\e]1;$1\a"
+}
+
+winname() {
+  printf "\e]2;$1\a"
+}
+
   ########
   # color terminals for ssh sessions or whatever
   #
