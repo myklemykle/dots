@@ -22,6 +22,12 @@ sgbw() { grep --color=never --exclude-dir .git --exclude \*.sql --exclude \*.xml
 SGF() { SG $* | cut -f1 -d: | sort -u }
 sgf() { sgbw $* | cut -f1 -d: | sort -u }
 
+# if I have a custom vim installed, I probably want to use it.
+if [ -f /usr/local/bin/vim ]
+then
+	alias vi=/usr/local/bin/vim
+fi
+
 # edit all matching files in vim:
 
 sgvi() {
