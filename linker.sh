@@ -2,7 +2,8 @@
 
 # install oh-my-zsh and janus:
 
-#echo sorry, not working yet; exit
+# TODO: fix the linking line to create symbolic links
+echo sorry, not working yet; exit
 
 [ -d ~/.oh-my-zsh ] || git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
@@ -16,6 +17,7 @@ DOTS=`ls -ad -1 .??* | grep -v '^.git$'`
 echo linking $DOTS
 for i in $DOTS
 do
+	# TODO: this is the line to fix.
   [ -f ~/$i ] || [ -f $i ] && ln -f $i ~/$i && echo linked $i
 done
 

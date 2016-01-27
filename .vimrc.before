@@ -3,6 +3,14 @@
 call janus#disable_plugin('command-t')
 call janus#disable_plugin('gundo')
 call janus#disable_plugin('vim-trailing-whitespace')
+" this one could be great, but it'd need a ton of configuration.
+call janus#disable_plugin('snipmate') 
+" hate hate hate
+call janus#disable_plugin('vim-gitgutter') 
+" never use:
+call janus#disable_plugin('nerdtree') 
+" not quite right
+call janus#disable_plugin('nerdcommenter') 
 
 " i prefer commas, don't you?
 let mapleader = ","

@@ -1,5 +1,13 @@
 [user]
 	name = Mykle Hansen
-	email = mykle-git@mykle.com
+	email = mykle@netx.net
 [core]
 	editor = vim
+[push]
+	default = simple
+[credential]
+	helper = osxkeychain
+[merge]
+	tool = opendiff
+[mergetool]
+	keepBackup = false
