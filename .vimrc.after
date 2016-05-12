@@ -13,5 +13,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:netrw_liststyle=3
 
-let g:jsdoc_return=0
+" let g:jsdoc_return=0
+let g:jsdoc_allow_input_prompt=1
 let g:jsdoc_underscore_private=1
+
+let g:vim_json_syntax_conceal = 0

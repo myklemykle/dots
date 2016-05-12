@@ -11,6 +11,8 @@ call janus#disable_plugin('vim-gitgutter')
 call janus#disable_plugin('nerdtree') 
 " not quite right
 call janus#disable_plugin('nerdcommenter') 
+" no thanks, weirdo:
+call janus#disable_plugin('vim-json') 
 
 " i prefer commas, don't you?
 let mapleader = ","
