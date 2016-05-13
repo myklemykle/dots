@@ -39,8 +39,11 @@ then
 		if [ -n "$1" ]
 		then
 			tabname `basename $1`
+		else 
+			tabname "vim"
 		fi
 		$__VIM "$@"
+		tabname 
 	}
 	alias vi=vim
 else
