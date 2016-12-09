@@ -6,10 +6,10 @@
 
 # for Apache Tomcat:
 export JAVA_HOME=/Library/Java/Home
-#export CATALINA_HOME=~/Documents/netxposure/tomcat/Home
-alias dam_on="sudo ~/Documents/netxposure/imageportal/bin/startup.sh"
-alias dam_off="sudo ~/Documents/netxposure/imageportal/bin/shutdown.sh"
-alias dam_restart="sudo ~/Documents/netxposure/imageportal/bin/shutdown.sh; sleep 10; sudo ~/Documents/netxposure/imageportal/bin/startup.sh"
+#export CATALINA_HOME=$IPDIR/..
+alias dam_on="sudo $IPDIR/bin/startup.sh"
+alias dam_off="sudo $IPDIR/bin/shutdown.sh"
+alias dam_restart="sudo $IPDIR/bin/shutdown.sh; sleep 10; sudo $IPDIR/bin/startup.sh"
 
 # grab the latest DAM release from service:
 newdam(){
@@ -23,7 +23,7 @@ newdam(){
 	fi
 	LATEST=`ssh mykle@service.netx.net "cd '/netx/service/data/repository/Jenkins/Upgrades/$TARGET/'; ls -t NetX*" | head -1`
 	scp "mykle@service.netx.net:/netx/service/data/repository/Jenkins/Upgrades/$TARGET/$LATEST" ~/Downloads
-		cd ~/Documents/netxposure/imageportal && { 
+		cd $IPDIR && { 
 			unzip -o ~/Downloads/$LATEST ; 
 			chmod 755 bin/*.sh # workaround for a bug
 		}
