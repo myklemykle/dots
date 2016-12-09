@@ -33,27 +33,23 @@ newdam(){
 # for Ant
 export ANT_OPTS='-Xms1024m -Xmx1024m -XX:MaxPermSize=1024m'
 
-# dev locations:
-export X7GIT="/Users/myklehansen/Documents/netxposure/html5"
-export X7DEV_URL="http://localhost/core/dev"
-export V8GIT="/Users/myklehansen/Documents/netxposure/v8"
-export V8DEV_URL="http://localhost/v8"
+# dev locations: now in k9.zsh
 
 # X7 dev environment on/off
 # (NOTE: this no longer works on ingot, because I run a virtual machine instead.)
 x7on(){
 	sudo echo "starting" # .. get password out of the way early
-	cd $X7DEV
+	cd $V8GIT
 	mamp start
-	sudo ~/Documents/netxposure/imageportal/bin/startup.sh
+	sudo $IPDIR/bin/startup.sh
 	sleep 3
-	open -a Google\ Chrome $X7DEV_URL
+	open -a Google\ Chrome $V8DEV_URL
 	grunt dev
 	grunt watch
 }
 
 x7off(){
-	sudo ~/Documents/netxposure/imageportal/bin/shutdown.sh
+	sudo $IPDIR/bin/shutdown.sh
 	sleep 2 # dam_off doesn't block
 	mamp stop
 }
