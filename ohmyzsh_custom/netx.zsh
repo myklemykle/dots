@@ -11,23 +11,34 @@ alias dam_on="sudo ~/Documents/netxposure/imageportal/bin/startup.sh"
 alias dam_off="sudo ~/Documents/netxposure/imageportal/bin/shutdown.sh"
 alias dam_restart="sudo ~/Documents/netxposure/imageportal/bin/shutdown.sh; sleep 10; sudo ~/Documents/netxposure/imageportal/bin/startup.sh"
 
-# grab the latest DAM release from service:
-newdam(){
-	#scp kropotkin.netx:/upgrades/latest/NetX-App-Latest.zip ~/Downloads &&
-		#/netx/service/data/repository/Jenkins/Upgrades/develop
-	if [ $1 ] 
+# # grab the latest DAM release from service:
+# (obsolete; latest releases come from Jenkins now.)
+# newdam(){
+# 	#scp kropotkin.netx:/upgrades/latest/NetX-App-Latest.zip ~/Downloads &&
+# 		#/netx/service/data/repository/Jenkins/Upgrades/develop
+# 	if [ $1 ] 
+# 	then
+# 		TARGET=$1
+# 	else
+# 		TARGET="master"
+# 	fi
+# 	LATEST=`ssh mykle@service.netx.net "cd '/netx/service/data/repository/Jenkins/Upgrades/$TARGET/'; ls -t NetX*" | head -1`
+# 	scp "mykle@service.netx.net:/netx/service/data/repository/Jenkins/Upgrades/$TARGET/$LATEST" ~/Downloads
+# 		cd ~/Documents/netxposure/imageportal && { 
+# 			unzip -o ~/Downloads/$LATEST ; 
+# 			chmod 755 bin/*.sh # workaround for a bug
+# 		}
+# 		#dam_restart
+# }
+
+# install New Dam:
+nd(){
+	if [ ! -z $1 ] 
 	then
-		TARGET=$1
-	else
-		TARGET="master"
+		cd ~/Documents/netxposure/test_vbox
+		./update.sh $1
+		cd
 	fi
-	LATEST=`ssh mykle@service.netx.net "cd '/netx/service/data/repository/Jenkins/Upgrades/$TARGET/'; ls -t NetX*" | head -1`
-	scp "mykle@service.netx.net:/netx/service/data/repository/Jenkins/Upgrades/$TARGET/$LATEST" ~/Downloads
-		cd ~/Documents/netxposure/imageportal && { 
-			unzip -o ~/Downloads/$LATEST ; 
-			chmod 755 bin/*.sh # workaround for a bug
-		}
-		#dam_restart
 }
 
 # for Ant
