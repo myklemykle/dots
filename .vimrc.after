@@ -19,6 +19,5 @@ let g:jsdoc_underscore_private=1
 
 let g:vim_json_syntax_conceal = 0
 
-" for fasut workshop:
-set noswapfile
-syntax off
+" For faustLive, which coredumps when the swap file of a .dsp file moves around:
+autocmd BufRead,BufNewFile *.dsp set noswapfile 
