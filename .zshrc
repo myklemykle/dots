@@ -32,6 +32,7 @@ ZSH_THEME="jreese"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git osx vi-mode)
 
+DISABLE_AUTO_UPDATE="true"  #http://stackoverflow.com/questions/11378607/oh-my-zsh-disable-would-you-like-to-check-for-updates-prompt
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
