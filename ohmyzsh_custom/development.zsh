@@ -6,17 +6,14 @@
 # my special mysql zsh tools
 [ -f ~/.zsql ] && . ~/.zsql
 
-# CVS == obsolete
-# alias cvsdiff="cvs diff 2>&1 | grep -v Diffing"
-
 # grep through source.
-SG() { grep --exclude-dir .git --exclude \*.jp\*g --exclude \*.pdf --exclude \*.png --exclude \*.gif --exclude tags --exclude \*.po --exclude \*.pot --exclude-dir cache --exclude-dir tmp -r "$*" . ; }
+SG() { egrep --exclude-dir .git --exclude \*.jp\*g --exclude \*.pdf --exclude \*.png --exclude \*.gif --exclude tags --exclude \*.po --exclude \*.pot --exclude-dir cache --exclude-dir tmp -r "$*" . ; }
 
 # same thing, but leave out the sql and xml files.
-sg() { grep --color=always --exclude-dir .git --exclude \*.sql --exclude \*.xml --exclude \*.jp\*g --exclude \*.pdf --exclude \*.png --exclude \*.gif --exclude tags --exclude \*.po --exclude \*.pot --exclude \*.min.js --exclude-dir cache --exclude-dir tmp -r "$*" . | egrep -v '.{255}'; }
+sg() { egrep --color=always --exclude-dir .git --exclude \*.sql --exclude \*.xml --exclude \*.jp\*g --exclude \*.pdf --exclude \*.png --exclude \*.gif --exclude tags --exclude \*.po --exclude \*.pot --exclude \*.min.js --exclude-dir cache --exclude-dir tmp -r "$*" . | egrep -v '.{255}'; }
 
 # same thing but leave out colorization -- handy for piping into another grep
-sgbw() { grep --color=never --exclude-dir .git --exclude \*.sql --exclude \*.xml --exclude \*.jp\*g --exclude \*.pdf --exclude \*.png --exclude \*.gif --exclude tags --exclude \*.po --exclude \*.pot --exclude \*.min.js --exclude-dir cache --exclude-dir tmp -r "$*" . | egrep -v '.{255}'; }
+sgbw() { egrep --color=never --exclude-dir .git --exclude \*.sql --exclude \*.xml --exclude \*.jp\*g --exclude \*.pdf --exclude \*.png --exclude \*.gif --exclude tags --exclude \*.po --exclude \*.pot --exclude \*.min.js --exclude-dir cache --exclude-dir tmp -r "$*" . | egrep -v '.{255}'; }
 
 # same thing, but give me just a list of matching files -- handy for piping into other commands
 SGF() { SG $* | cut -f1 -d: | sort -u }
@@ -54,15 +51,16 @@ fi
 # edit all matching files in vim:
 
 sgvi() {
-	#cut -f1 -d: | sort -u | xargs vi
-	#SGVI_FILES=`sg $* | cut -f1 -d: | sort -u | paste -s -`
-	#echo vi $SGVI_FILES
-	#vi $SGVI_FILES
 	vi `sgbw $* | cut -f1 -d':' | sort -u | paste -s -`
 }
 
+# find files by pattern and edit them in vim:
+fvi() {
+	vi `fff $*`
+}
+
 # grep history
-alias hgr="history | grep"
+alias hgr="history | egrep"
 
 # recursively remove files matching a pattern -- use with severe caution!
 rrm() {
@@ -82,7 +80,7 @@ gsp() {
 
 # grep the output of ps
 psg() {
-	ps -ef | grep $1
+	ps -ef | egrep $1
 }
 
 # exhuberance!
@@ -134,7 +132,7 @@ if [ "$TERM_PROGRAM" = "Apple_Terminal" ]; then
 
 		for key in ${(k)namemap};
 		do
-			if echo "$@" | grep "$key" 
+			if echo "$@" | egrep "$key" 
 			then
 				STYLE=${namemap[$key]}
 				OLDSTYLE=`SetTerminalStyle -s "${STYLE}" -t "$@" -c`
