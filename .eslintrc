@@ -3,6 +3,7 @@
 		"camelcase": 0,
 		"comma-spacing": 0,
 		"curly": 0,
+		"dot-notation": 1,
 		"eqeqeq": 0,
 		"global-strict": 0,
 		"key-spacing": 0,
