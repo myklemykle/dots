@@ -1,0 +1,2 @@
+; INI format.  https://www.npmjs.com/package/rc
+preload = false
