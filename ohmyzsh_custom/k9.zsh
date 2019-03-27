@@ -117,14 +117,23 @@ export NODE_PATH='/usr/local/lib/jsctags:${NODE_PATH}'
 ulimit -n 1000
 
 # Workin' at home:
-export X7GIT=~/Documents/netxposure/html5
-export X7DEV_URL="http://localhost/core/dev"
-export V8GIT=~/Documents/netxposure/v8
-export V8DEV_URL="http://localhost/v8"
-export IPDIR="~/Documents/netxposure/tomcat/imageportal"
+#export X7GIT=~/Documents/netxposure/html5
+#export X7DEV_URL="http://localhost/core/dev"
+#export V8GIT=~/Documents/netxposure/v8
+#export V8DEV_URL="http://localhost/v8"
+#export IPDIR="~/Documents/netxposure/tomcat/imageportal"
 
 # winname not a thing in 10.8?
 # function for setting terminal titles in OSX
 function winname {
   printf "\033]0;%s\007" "$1"
 }
+
+# Faust (as installed by macports) puts its libraries in a place it can't find them!  Bleh.
+export FAUST_LIB_PATH=/opt/local/share/faust
+
+# 2018.11.22:
+# ZSH broke a thing in 5.2(?), that OS X doesn't fix, so basically
+# dragging a folder doesn't escape the pasted path anymore, unless
+# one does this:
+unset zle_bracketed_paste
