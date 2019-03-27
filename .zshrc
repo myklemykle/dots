@@ -35,6 +35,7 @@ plugins=(git osx vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
+# TODO: PATH stuff should probably be in custom as much as possible ...
 PATH=`paste -d ':' -s - << EOF
 /usr/local/bin
 /usr/local/opt/ruby/bin
@@ -54,6 +55,10 @@ $HOME/Documents/Perl\ Scripts
 /Applications/MAMP/Library/bin
 /Applications/MAMP/bin/php5/bin
 EOF`
+	### took these out ... cross-compiler for Bela (never got working)
+	#/usr/local/linaro/arm-linux-gnueabihf/bin
+	#/usr/local/linaro/tools
+	#$HOME/Documents/bela/xcompiling/bela/scripts
 export PATH
 
 # zsh tweaks i want on all hosts:
