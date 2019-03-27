@@ -22,3 +22,8 @@ let g:vim_json_syntax_conceal = 0
 " for fasut workshop:
 set noswapfile
 syntax off
+
+" .lib is a Faust extension in this century.  (Not COBOL.)
+augroup filetypedetect
+	au! BufRead,BufNewFile *.lib setfiletype text
+augroup END
