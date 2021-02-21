@@ -55,6 +55,7 @@ $HOME/Documents/Perl\ Scripts
 /Applications/MAMP/bin
 /Applications/MAMP/Library/bin
 /Applications/MAMP/bin/php5/bin
+$HOME/.cargo/bin
 EOF`
 	### took these out ... cross-compiler for Bela (never got working)
 	#/usr/local/linaro/arm-linux-gnueabihf/bin
@@ -67,3 +68,7 @@ unsetopt correct      # no autocorrection
 unsetopt correctall
 DISABLE_AUTO_TITLE="true"
 #set +x
+
+# various auto-installers (macports etc) that want to add
+# something to my profile like to add it here:
+[ -f ./.zprofile ] && . ./.zprofile

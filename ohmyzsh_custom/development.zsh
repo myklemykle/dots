@@ -1,5 +1,5 @@
 ####
-# Generic software development stuff -- for all my work macs
+# Generic software development stuff (macos version) -- for all my work macs
 #
 ####
 
@@ -154,3 +154,18 @@ ulimit -n 1000
 
 # down with rmcup!
 export LESS="-X -R"
+
+# winname not a thing in 10.8?
+# function for setting terminal titles in OSX
+function winname {
+  printf "\033]0;%s\007" "$1"
+}
+
+# Faust (as installed by macports) puts its libraries in a place it can't find them!  Bleh.
+export FAUST_LIB_PATH=/opt/local/share/faust
+
+# 2018.11.22:
+# ZSH broke a thing in 5.2(?), that OS X doesn't fix, so basically
+# dragging a folder doesn't escape the pasted path anymore, unless
+# one does this:
+unset zle_bracketed_paste

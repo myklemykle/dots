@@ -70,3 +70,10 @@ alias x7="cd $X7GIT/src"
 # ultra-handy dirs
 export CDPATH=".:$HOME/Documents/netxposure/gp4/products/:$HOME/Documents/netxposure:$HOME/Documents/netxposure/gp4"
 
+# Workin' at home:
+#export X7GIT=~/Documents/netxposure/html5
+#export X7DEV_URL="http://localhost/core/dev"
+#export V8GIT=~/Documents/netxposure/v8
+#export V8DEV_URL="http://localhost/v8"
+#export IPDIR="~/Documents/netxposure/tomcat/imageportal"
+
