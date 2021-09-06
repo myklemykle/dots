@@ -4,7 +4,8 @@ nearview() {
 
 	if [ -n "$CONTRACT_NAME" ] 
 	then
-		npx near view $CONTRACT_NAME $*
+		#npx near view $CONTRACT_NAME $*
+		../cli/bin/near view $CONTRACT_NAME $*
 	else
 		echo ". ./.env to set project variables"
 		return 1
@@ -17,7 +18,8 @@ nearcall() {
 
 	if [ -n "$CONTRACT_NAME" ] 
 	then
-		npx near call --accountId $ADMIN_ID $CONTRACT_NAME $*
+		#npx near call --accountId $ADMIN_ID $CONTRACT_NAME $*
+		../cli/bin/near call --accountId $ADMIN_ID $CONTRACT_NAME $*
 	else
 		echo ". ./.env to set project variables"
 		return 1

@@ -10,7 +10,7 @@
 SG() { egrep --exclude-dir .git --exclude \*.jp\*g --exclude \*.pdf --exclude \*.png --exclude \*.gif --exclude tags --exclude \*.po --exclude \*.pot --exclude-dir cache --exclude-dir tmp -r -- "$*" . ; }
 
 # same thing, but leave out the sql and xml files.
-sg() { egrep --color=always --exclude-dir .git --exclude \*.sql --exclude \*.xml --exclude \*.jp\*g --exclude \*.pdf --exclude \*.png --exclude \*.gif --exclude tags --exclude \*.po --exclude \*.pot --exclude \*.min.js --exclude-dir cache --exclude-dir tmp -r -- "$*" . | egrep -v '.{255}'; }
+sg() { egrep --color=always --exclude-dir .cache --exclude-dir .git --exclude \*.sql --exclude \*.xml --exclude \*.jp\*g --exclude \*.pdf --exclude \*.png --exclude \*.gif --exclude tags --exclude \*.po --exclude \*.pot --exclude \*.min.js --exclude-dir cache --exclude-dir tmp --exclude-dir contracts/rust/target -r -- "$*" . | egrep -v '.{255}'; }
 
 # same thing but leave out colorization -- handy for piping into another grep
 sgbw() { egrep --color=never --exclude-dir .git --exclude \*.sql --exclude \*.xml --exclude \*.jp\*g --exclude \*.pdf --exclude \*.png --exclude \*.gif --exclude tags --exclude \*.po --exclude \*.pot --exclude \*.min.js --exclude-dir cache --exclude-dir tmp -r -- "$*" . | egrep -v '.{255}'; }
@@ -18,6 +18,10 @@ sgbw() { egrep --color=never --exclude-dir .git --exclude \*.sql --exclude \*.xm
 # same thing, but give me just a list of matching files -- handy for piping into other commands
 SGF() { SG $* | cut -f1 -d: | sort -u }
 sgf() { sgbw $* | cut -f1 -d: | sort -u }
+
+# or just do it the git way:
+unalias gg
+gg() { git grep $* }
 
 # VIM setup:
 #
@@ -74,8 +78,17 @@ fff() {
 }
 
 # global search/replace in files -- do not use! you will die!
-gsp() {
+unalias gsr  # too many git aliases, really
+gsr() {
 	sgf $1 | xargs perl -pi.bak -e "s|$1|$2|g"
+}
+ggsr() {
+	gg -o $1 | cut -f1 -d: | sort -u | xargs perl -pi.bak -e "s|$1|$2|g"
+}
+
+# same thing for files under git:
+gitsr() {
+	git grep -l $1 | xargs sed -i '' -e "s/$1/$2/g"
 }
 
 # grep the output of ps
@@ -111,40 +124,6 @@ winname() {
 	printf "\e]2;$1\a"
 }
 
-	########
-	# color terminals for ssh sessions or whatever
-	#
-
-if [ "$TERM_PROGRAM" = "Apple_Terminal" ]; then
-	function ssh {
-		typeset -A namemap
-
-			# a map of hostnames to names of styles defined in Terminal.app Settings pane
-		namemap=(
-			cuttysark.netx.net poachedlive 
-			poachedjobs.com poachedlive 
-			poachedjs.netx.net poachedstaging
-			git.netx source
-			subversion.netx source
-			doby.netx source
-			luna.netx cvs
-		)
-
-		for key in ${(k)namemap};
-		do
-			if echo "$@" | egrep "$key" 
-			then
-				STYLE=${namemap[$key]}
-				OLDSTYLE=`SetTerminalStyle -s "${STYLE}" -t "$@" -c`
-				break
-			fi
-		done
-
-		/usr/bin/ssh "$@"
-			# restore
-		SetTerminalStyle -s "$OLDSTYLE"
-	}
-fi
 
 # for jsctags (javascript tagging thing that uses node.js) -- not really working?
 export NODE_PATH='/usr/local/lib/jsctags:${NODE_PATH}'
