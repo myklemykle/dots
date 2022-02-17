@@ -35,34 +35,9 @@ plugins=(git osx vi-mode)
 DISABLE_AUTO_UPDATE="true"  #http://stackoverflow.com/questions/11378607/oh-my-zsh-disable-would-you-like-to-check-for-updates-prompt
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-# TODO: PATH stuff should probably be in custom as much as possible ...
-PATH=`paste -d ':' -s - << EOF
-/usr/local/bin
-/usr/local/opt/ruby/bin
-/usr/local/CrossPack-AVR/bin
-/opt/local/bin
-/opt/local/sbin
-/usr/local/bin
-/usr/local/sbin
-$HOME/bin
-$HOME/Documents/Perl\ Scripts
-/usr/bin
-/bin
-/usr/sbin
-/sbin
-/usr/local/share/npm/bin
-/Applications/MAMP/bin
-/Applications/MAMP/Library/bin
-/Applications/MAMP/bin/php5/bin
-$HOME/.cargo/bin
-EOF`
-	### took these out ... cross-compiler for Bela (never got working)
-	#/usr/local/linaro/arm-linux-gnueabihf/bin
-	#/usr/local/linaro/tools
-	#$HOME/Documents/bela/xcompiling/bela/scripts
-export PATH
-
+## new PATH deal: customize path in .path, and/or ohmyzsh/custom
+export PATH=`$HOME/bin/path`
+#
 # zsh tweaks i want on all hosts:
 unsetopt correct      # no autocorrection
 unsetopt correctall
