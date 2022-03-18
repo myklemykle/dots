@@ -18,4 +18,8 @@
 
 # echo path in the correct format for the current shell
 NEWPATH=`cat ~/.path | tr '\n' ':'`
-echo $PATH
+# expand any shell variables used in .path like $HOME
+# note we can't call zsh for this without recursive hang, but sh will do
+NEWPATH=`sh -c "echo $NEWPATH"`
+
+echo $NEWPATH
