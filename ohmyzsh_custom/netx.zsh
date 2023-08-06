@@ -77,3 +77,37 @@ export CDPATH=".:$HOME/Documents/netxposure/gp4/products/:$HOME/Documents/netxpo
 #export V8DEV_URL="http://localhost/v8"
 #export IPDIR="~/Documents/netxposure/tomcat/imageportal"
 
+  ########
+  # color terminals for ssh sessions or whatever
+  #
+
+if [ "$TERM_PROGRAM" = "Apple_Terminal" ]; then
+  function ssh {
+    typeset -A namemap
+
+      # a map of hostnames to names of styles defined in Terminal.app Settings pane
+    namemap=(
+      cuttysark.netx.net poachedlive
+      poachedjobs.com poachedlive
+      poachedjs.netx.net poachedstaging
+      git.netx source
+      subversion.netx source
+      doby.netx source
+      luna.netx cvs
+    )
+
+    for key in ${(k)namemap};
+    do
+      if echo "$@" | grep "$key"
+      then
+        STYLE=${namemap[$key]}
+        OLDSTYLE=`SetTerminalStyle -s "${STYLE}" -t "$@" -c`
+        break
+      fi
+    done
+
+    /usr/bin/ssh "$@"
+      # restore
+    SetTerminalStyle -s "$OLDSTYLE"
+  }
+fi

@@ -75,53 +75,41 @@ turn_out(){
   cat ~/.ssh/id_rsa.pub | ssh $* "mkdir .ssh; chmod 700 .ssh; cat >> .ssh/authorized_keys;"
 }
 
-  ########
-  # color terminals for ssh sessions or whatever
-  #
-
-if [ "$TERM_PROGRAM" = "Apple_Terminal" ]; then
-  function ssh {
-    typeset -A namemap
-
-      # a map of hostnames to names of styles defined in Terminal.app Settings pane
-    namemap=(
-      cuttysark.netx.net poachedlive 
-      poachedjobs.com poachedlive 
-      poachedjs.netx.net poachedstaging
-      git.netx source
-      subversion.netx source
-      doby.netx source
-      luna.netx cvs
-    )
-
-    for key in ${(k)namemap};
-    do
-      if echo "$@" | grep "$key" 
-      then
-        STYLE=${namemap[$key]}
-        OLDSTYLE=`SetTerminalStyle -s "${STYLE}" -t "$@" -c`
-        break
-      fi
-    done
-
-    /usr/bin/ssh "$@"
-      # restore
-    SetTerminalStyle -s "$OLDSTYLE"
-  }
-fi
+#   ########
+#   # color terminals for ssh sessions or whatever
+#   #
+#
+# if [ "$TERM_PROGRAM" = "Apple_Terminal" ]; then
+#   function ssh {
+#     typeset -A namemap
+#
+#       # a map of hostnames to names of styles defined in Terminal.app Settings pane
+#     namemap=(
+#       example1.com source
+#       example2.com cvs
+#     )
+#
+#     for key in ${(k)namemap};
+#     do
+#       if echo "$@" | grep "$key" 
+#       then
+#         STYLE=${namemap[$key]}
+#         OLDSTYLE=`SetTerminalStyle -s "${STYLE}" -t "$@" -c`
+#         break
+#       fi
+#     done
+#
+#     /usr/bin/ssh "$@"
+#       # restore
+#     SetTerminalStyle -s "$OLDSTYLE"
+#   }
+# fi
 
 # for jsctags (javascript tagging thing that uses node.js) -- not really working?
 export NODE_PATH='/usr/local/lib/jsctags:${NODE_PATH}'
 
 # give me all the filez!!!
 ulimit -n 1000
-
-# Workin' at home:
-#export X7GIT=~/Documents/netxposure/html5
-#export X7DEV_URL="http://localhost/core/dev"
-#export V8GIT=~/Documents/netxposure/v8
-#export V8DEV_URL="http://localhost/v8"
-#export IPDIR="~/Documents/netxposure/tomcat/imageportal"
 
 # winname not a thing in 10.8?
 # function for setting terminal titles in OSX
