@@ -82,6 +82,7 @@ unalias gsr  # too many git aliases, really
 gsr() {
 	sgf $1 | xargs perl -pi.bak -e "s|$1|$2|g"
 }
+# same but only touch files in current git repo:
 ggsr() {
 	gg -o $1 | cut -f1 -d: | sort -u | xargs perl -pi.bak -e "s|$1|$2|g"
 }
@@ -110,9 +111,9 @@ alias pear="/Applications/MAMP/bin/php/php5.4.4/bin/pear"
 alias phing="/Applications/MAMP/bin/php/php5.4.4/bin/phing"
 alias mamplogs="tail -f /Applications/MAMP/logs/*err*"
 
-# bitch make me a sandwich!
+# bich make me a sandwich
 turn_out(){
-	cat ~/.ssh/id_rsa.pub | ssh $* "if [ -d .ssh ]; then; else; mkdir .ssh; chmod 700 .ssh; fi; cat >> .ssh/authorized_keys;"
+	cat ~/.ssh/id_rsa.pub | ssh $* 'if [ ! -d .ssh ] ; then mkdir .ssh; chmod 700 .ssh; fi; cat >> .ssh/authorized_keys;'
 }
 
 # label windows and tabs in xterm/terminal/whatever:

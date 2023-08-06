@@ -17,3 +17,7 @@ $HOME/Documents/Perl\ Scripts
 /sbin
 /usr/local/share/npm/bin
 $HOME/.cargo/bin
+$HOME/Library/Python/3.8/bin
+$HOME/.local/bin
+$HOME/Library/Python/3.8/bin
+$HOME/.docker/bin
