@@ -1,14 +1,11 @@
-/opt/local/bin
-/opt/local/sbin
 /opt/homebrew/bin
 /opt/homebrew/sbin
 /usr/local/bin
 /usr/local/opt/ruby/bin
 /usr/local/CrossPack-AVR/bin
+/usr/local/sbin
 /opt/local/bin
 /opt/local/sbin
-/usr/local/bin
-/usr/local/sbin
 $HOME/bin
 $HOME/Documents/Perl\ Scripts
 /usr/bin
@@ -17,7 +14,8 @@ $HOME/Documents/Perl\ Scripts
 /sbin
 /usr/local/share/npm/bin
 $HOME/.cargo/bin
-$HOME/Library/Python/3.8/bin
 $HOME/.local/bin
-$HOME/Library/Python/3.8/bin
 $HOME/.docker/bin
+/opt/faust/bin
+$HOME/Library/Arduino15/packages/rp2040/tools/pqt-gcc/2.2.0-d04e724/bin-12
+$HOME/Library/Python/3.8/bin
