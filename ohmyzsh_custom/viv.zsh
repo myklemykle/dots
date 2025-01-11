@@ -1,9 +1,4 @@
 #
-# M1 brew location:
-#
-# TODO: fix how PATH is handled ... local custom should mostly be here
-#export PATH="${PATH}:/opt/homebrew/bin"
-#
 # aliases for managing all my websites:
 . ~/Sites/aliases.zsh
 
@@ -18,4 +13,7 @@ alias openocd='printenv | grep OPENOCD_ ; $OPENOCD_BIN -c "$OPENOCD_CMD" -s $OPE
 
 # PICO SDK location ... since i get this from the pico-arduino package,
 # this patch changes with every rev of that pkg.  Not ideal.
-export PICO_SDK_PATH=$HOME/Library/Arduino15/packages/rp2040/hardware/rp2040/3.3.0/pico-sdk
+export PICO_SDK_PATH=`echo $HOME/Library/Arduino15/packages/rp2040/hardware/rp2040/4.*/pico-sdk`
+
+# pick up the pico tools 
+PATH="$PATH:$PICO_SDK_PATH/../tools"
