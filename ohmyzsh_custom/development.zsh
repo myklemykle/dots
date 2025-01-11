@@ -9,8 +9,8 @@
 # grep through source.
 SG() { egrep --exclude-dir .git --exclude \*.jp\*g --exclude \*.pdf --exclude \*.png --exclude \*.gif --exclude tags --exclude \*.po --exclude \*.pot --exclude-dir cache --exclude-dir tmp -r -- "$*" . ; }
 
-# same thing, but leave out the sql and xml files.
-sg() { egrep --color=always --exclude-dir .cache --exclude-dir .git --exclude \*.sql --exclude \*.xml --exclude \*.jp\*g --exclude \*.pdf --exclude \*.png --exclude \*.gif --exclude tags --exclude \*.po --exclude \*.pot --exclude \*.min.js --exclude-dir cache --exclude-dir tmp --exclude-dir contracts/rust/target -r -- "$*" . | egrep -v '.{255}'; }
+# same thing, but leave out sql and xml files, .o and .elf files
+sg() { egrep --color=always --exclude-dir .cache --exclude-dir .git --exclude \*.sql --exclude \*.xml --exclude \*.jp\*g --exclude \*.pdf --exclude \*.png --exclude \*.gif --exclude tags --exclude \*.po --exclude \*.pot --exclude \*.min.js --exclude \*.o --exclude \*.elf --exclude-dir cache --exclude-dir tmp --exclude-dir contracts/rust/target -r -- "$*" . | egrep -v '.{255}'; }
 
 # same thing but leave out colorization -- handy for piping into another grep
 sgbw() { egrep --color=never --exclude-dir .git --exclude \*.sql --exclude \*.xml --exclude \*.jp\*g --exclude \*.pdf --exclude \*.png --exclude \*.gif --exclude tags --exclude \*.po --exclude \*.pot --exclude \*.min.js --exclude-dir cache --exclude-dir tmp -r -- "$*" . | egrep -v '.{255}'; }
