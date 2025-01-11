@@ -30,3 +30,7 @@ augroup END
 
 " For faustLive, which coredumps when the swap file of a .dsp file moves around:
 autocmd BufRead,BufNewFile *.dsp set noswapfile 
+
+" Better (smaller) code printouts at home
+set printfont=courier:h8
+set printoptions=left:5pc
